@@ -21,6 +21,20 @@
         <div class="row">
             <input type="button" ng-click="showMessage()" value="click me" class="btn btn-primary">
         </div>
+        <br>
+        <div>
+            <ul ng-repeat="item in user">
+                <li>
+                    {{item.id}}
+                </li>
+                <li>
+                    {{item.title}}
+                </li>
+                <li>
+                    {{item.author}}
+                </li>
+            </ul>
+        </div>
     </div>
 </body>
 
