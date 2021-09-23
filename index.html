@@ -1,9 +1,11 @@
-<html ng-app="myngapp">
+<html>
 
 <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
     <script src="js/angular.mim.js"></script>
+    <script src="https://code.angularjs.org/1.5.9/angular-route.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
@@ -15,10 +17,19 @@
     myIndex
 </title>
 
-<body ng-controller="myController">
-    {{message}}
-    <div class="container-fluid ">
+<body ng-app="myngapp">
+    <div class="container">
+        <ul>
+            <li><a href="#!NewEvent"> Add New Event</a></li>
+            <li><a href="#!DisplayEvent"> Display Event</a></li>
+        </ul>
+        <div ng-view></div>
+    </div>
+    <div class="container-fluid" ng-controller="myController">
         <div class="row">
+            {{message}}
+            <br />
+            <br />
             <input type="button" ng-click="showMessage()" value="click me" class="btn btn-primary">
         </div>
         <br>
@@ -36,6 +47,24 @@
             </ul>
         </div>
     </div>
-</body>
 
+    <div ng-controller="SecondController">
+        {{counter}}
+        Enter Name to Display :
+        <input type="text" ng-model="name"><br />you entered : <span ng-bind="name"></span>
+        <br>
+        {{msg}}
+    </div>
+    <!--Form Demo-->
+    <div class="container-fluid">
+        <form name="userForm">
+            <div class="col col-md-3">
+                <input name="fristName" class="form-control" ng-model="fristName" required>
+                <span ng-show="userForm.fristName.$touched && userForm.fristName.$invalid"> Required! </span>
+                <br>
+                <span ng-bind="fristName">{{fristName}}</span>
+            </div>
+        </form>
+    </div>
+</body>
 </html>
