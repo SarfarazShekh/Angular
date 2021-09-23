@@ -1,21 +1,21 @@
-var myApp = angular.module('myngapp', ['ngRoute']).config(['$routeProvider', function ($routeProvider) {
+var myApp = angular.module('myngapp', ['ngRoute', 'ngTable']).config(['$routeProvider', function ($routeProvider) {
     $routeProvider.
-    when("/NewEvent",{
-        templateUrl : "dog.html",
-        controller: "AddEventController"
-    }).
-    when("/DisplayEvent", {
-        templateUrl: "cat.html",
-        controller: "ShowDisplayController"
-    }).
-    otherwise ({
-        redirectTo: '/dog'
-    });
+        when("/NewEvent", {
+            templateUrl: "dog.html",
+            controller: "AddEventController"
+        }).
+        when("/DisplayEvent", {
+            templateUrl: "cat.html",
+            controller: "ShowDisplayController"
+        }).
+        otherwise({
+            redirectTo: '/dog'
+        });
 }]);
 
 //     }).when('/cats', {
 //         templateUrl: 'cat.html',
-        
+
 //         controller:'myController'
 //     })
 // }
@@ -43,7 +43,7 @@ myApp.controller('myController', function ($scope, $http) {
 
 
 });
-myApp.controller('SecondController', function ($scope, $interval,$timeout) {
+myApp.controller('SecondController', function ($scope, $interval, $timeout, ngTableParams) {
     $scope.counter = 0;
     // $interval(function(){
     //     var coaunt=0;
@@ -52,22 +52,22 @@ myApp.controller('SecondController', function ($scope, $interval,$timeout) {
     $timeout(function () {
 
         $scope.msg = "Welcome to Tutlane.com";
-        
-        }, 3000);
-    $scope.name="sarfaraz";
-//     $scope.user={
-// fristName:null
-//     };
 
+    }, 3000);
+    $scope.name = "sarfaraz";
+    //     $scope.user={
+    // fristName:null
+    //     };
+   
 });
 
-myApp.controller("AddEventController", function($scope) {
+myApp.controller("AddEventController", function ($scope) {
 
-        $scope.message = "This is to Add a new Event";
+    $scope.message = "This is to Add a new Event";
 
-    });
-    myApp.controller("ShowDisplayController",function($scope){
+});
+myApp.controller("ShowDisplayController", function ($scope) {
 
-        $scope.message = "This is display an Event";
+    $scope.message = "This is display an Event";
 
-    });
+});
