@@ -2,15 +2,23 @@
 
 <head>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script src="js/jquery.min.js"></script>
-    <script scr="js/angular.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/myjs.js"></script>
+    <style type="text/css">
+        .error {
+            color: red
+        }
+    </style>
 </head>
 <title>
     Angular JS CRUD Oprations
 </title>
-<body ng-app="myApp" ng-controller="myFristCtrl">
-    
+
+<body ng-app="myApp" >
+
     <div class="container-fluid mt-1">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand">CRUD</a>
@@ -28,10 +36,72 @@
         </nav>
         <!--vals-->
     </div>
-    <div class="container-fluid">
-        
+    <div class="container-fluid mt-5" ng-controller="myFristCtrl">
+
+        <form name="personForm" ng-submit="personForm.$valid &&sendForm()">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputEmail4">Email</label>
+                    <input type="email" class="form-control" name="email" placeholder="Email"  ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" ng-model="person.email"
+                        required>
+                    <span ng-show="personForm.email.$touched && personForm.email.$invalid"
+                        class="text-danger">Required</span>
+                        <span class="text-danger" ng-show="personForm.email.$dirty&&personForm.email.$error.pattern">Please Enter Valid Email</span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4">Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Password"
+                        ng-model="person.password" required>
+                        <span ng-show="personForm.password.$touched && personForm.password.$invalid"
+                        class="text-danger">Required</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputAddress">Address</label>
+                <input type="text" class="form-control" name="address" placeholder="1234 Main St"
+                    ng-model="person.address" required>
+                    <span ng-show="personForm.address.$touched && personForm.address.$invalid"
+                    class="text-danger">Required</span>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputCity">City</label>
+                    <input type="text" class="form-control" name="city" ng-model="person.city" required>
+                    <span ng-show="personForm.city.$touched && personForm.city.$invalid"
+                    class="text-danger">Required</span>
+                </div>
+                <!-- <div class="form-group col-md-4">
+                    <label for="inputState">State</label>
+                    <select class="form-control" name="state" ng-model="person.state" required>
+                        <option value="" selected>Choose...</option>
+                        <option data-ng-repeat="rl in role" value="{{rl.id}}">{{rl.name}}</option>
+                    </select>
+                    <span ng-show="personForm.state.$touched && personForm.state.$invalid"
+                    class="text-danger">Required</span>
+                </div> -->
+                <div class="form-group col-md-2">
+                    <label for="inputZip">Zip</label>
+                    <input type="text" class="form-control" name="zip" ng-model="person.zip" required>
+                    <span ng-show="personForm.zip.$touched && personForm.zip.$invalid"
+                    class="text-danger">Required</span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" >Sign in</button>
+        </form>
+        <!-- <form name="personForm">
+
+            First Name: <input type="text" name="firstname" ng-model="person.fname" required />
+            
+            <span ng-show="personForm.firstname.$touched && personForm.firstname.$invalid "> Required! </span><br /><br />           
+            
+            Last Name:<input type="text" name="lastname" ng-model="person.lname" required />
+            
+            <span ng-show="personForm.lastname.$touched && personForm.lastname.$valid"> Thanks for Text </span><br /><br />
+            
+            </form> -->
     </div>
 </body>
 
 </html>
-
