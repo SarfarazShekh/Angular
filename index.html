@@ -17,7 +17,7 @@
     Angular JS CRUD Oprations
 </title>
 
-<body ng-app="myApp" >
+<body ng-app="myApp">
 
     <div class="container-fluid mt-1">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -37,22 +37,23 @@
         <!--vals-->
     </div>
     <div class="container-fluid mt-5" ng-controller="myFristCtrl">
-
-        <form name="personForm" ng-submit="personForm.$valid &&sendForm()">
+        <span ng-repeat="option in role">{{option.Id}}</span>
+        <form name="personForm">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputEmail4">Email</label>
-                    <input type="email" class="form-control" name="email" placeholder="Email"  ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" ng-model="person.email"
-                        required>
+                    <input type="email" class="form-control" name="email" placeholder="Email"
+                        ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" ng-model="person.email" required>
                     <span ng-show="personForm.email.$touched && personForm.email.$invalid"
                         class="text-danger">Required</span>
-                        <span class="text-danger" ng-show="personForm.email.$dirty&&personForm.email.$error.pattern">Please Enter Valid Email</span>
+                    <span class="text-danger" ng-show="personForm.email.$dirty&&personForm.email.$error.pattern">Please
+                        Enter Valid Email</span>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputPassword4">Password</label>
                     <input type="password" class="form-control" name="password" placeholder="Password"
                         ng-model="person.password" required>
-                        <span ng-show="personForm.password.$touched && personForm.password.$invalid"
+                    <span ng-show="personForm.password.$touched && personForm.password.$invalid"
                         class="text-danger">Required</span>
                 </div>
             </div>
@@ -60,36 +61,67 @@
                 <label for="inputAddress">Address</label>
                 <input type="text" class="form-control" name="address" placeholder="1234 Main St"
                     ng-model="person.address" required>
-                    <span ng-show="personForm.address.$touched && personForm.address.$invalid"
+                <span ng-show="personForm.address.$touched && personForm.address.$invalid"
                     class="text-danger">Required</span>
             </div>
-
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputCity">City</label>
                     <input type="text" class="form-control" name="city" ng-model="person.city" required>
                     <span ng-show="personForm.city.$touched && personForm.city.$invalid"
-                    class="text-danger">Required</span>
+                        class="text-danger">Required</span>
                 </div>
-                <!-- <div class="form-group col-md-4">
+                <div class="form-group col-md-4">
                     <label for="inputState">State</label>
                     <select class="form-control" name="state" ng-model="person.state" required>
                         <option value="" selected>Choose...</option>
-                        <option data-ng-repeat="rl in role" value="{{rl.id}}">{{rl.name}}</option>
+                        <option ng-repeat="option in role" value="{{option.Id}}">{{option.value}}</option>
                     </select>
                     <span ng-show="personForm.state.$touched && personForm.state.$invalid"
                     class="text-danger">Required</span>
-                </div> -->
+                </div>
                 <div class="form-group col-md-2">
                     <label for="inputZip">Zip</label>
                     <input type="text" class="form-control" name="zip" ng-model="person.zip" required>
                     <span ng-show="personForm.zip.$touched && personForm.zip.$invalid"
-                    class="text-danger">Required</span>
+                        class="text-danger">Required</span>
                 </div>
+                <input type="hidden" name="id" value="person.id" ng-model="person.id">
             </div>
 
-            <button type="submit" class="btn btn-primary" >Sign in</button>
+            <button type="button" class="btn btn-primary" ng-click="personForm.$valid && sendForm()" ng-hide="isUpadate">Sign in</button>
+            <button type="button" class="btn btn-secondary" ng-click="  updatNewData()" ng-show="isUpadate">Update</button>
+            <button type="button" class="btn btn-default" ng-click="resetForm(person)" ng-show="isUpadate">cancel</button>
+
         </form>
+        <span>{{message}}</span>
+        <br>
+        <h2>Available user Detail</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>email</th>
+                    <th>password</th>
+                    <th>address</th>
+                    <th>city</th>
+                    <th>pin</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="user in userData">
+                <td>{{user.email}}</td>
+                <td>{{user.password}}</td>
+                <td>{{user.address}}</td>
+                <td>{{user.city}}</td>
+                <td>{{user.zip}}</td>
+                <td><a href="" ng-click="UpdateData(user)"><i class="fas fa-edit"></i>edit</a>
+                <a href="" ng-click="deleteData(user.id)"><i class="fas fa-trash"></i>delete</a>
+                </td>
+
+
+            </tr>
+
+        </table>
         <!-- <form name="personForm">
 
             First Name: <input type="text" name="firstname" ng-model="person.fname" required />

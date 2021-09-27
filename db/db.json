@@ -1,0 +1,53 @@
+{
+  "employee": [
+    {
+      "email": "sarfaraz.ali@pyramidconsultinginc.com",
+      "address": "Nida",
+      "city": "Gautam budh nagar",
+      "zip": "201301",
+      "password": "12324",
+      "id": 1
+    },
+    {
+      "email": "sarfarazali.shekh@gmail.com",
+      "address": "Nida",
+      "city": "Gautam budh nagar",
+      "zip": "201301",
+      "password": "123123",
+      "id": 2
+    },
+    {
+      "email": "aatif.shekh@gmail.com",
+      "password": "12344",
+      "address": "N-103 Delhi",
+      "city": "Delhi",
+      "zip": "110015",
+      "id": 3
+    },
+    {
+      "email": "tahira@gmail.com",
+      "password": "12324",
+      "address": "Nida",
+      "city": "Gautam budh nagar",
+      "zip": "201301",
+      "id": 4
+    },
+    {
+      "email": "credit@gmail.com",
+      "password": "1234",
+      "address": "Noida topper",
+      "city": "Delhi",
+      "zip": "201201",
+      "id": 5
+    },
+    {
+      "email": "name@gmail.com",
+      "password": "12345",
+      "address": "Nida",
+      "city": "Gautam budh nagar new asho nagar",
+      "zip": "201301",
+      "state": "2",
+      "id": 6
+    }
+  ]
+}
