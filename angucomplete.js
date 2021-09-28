@@ -1,7 +1,7 @@
 /**
  * Angucomplete
  * Autocomplete directive for AngularJS
- * By Sarfaraz
+ * By Sarfaraz  
  */
 
 angular.module('angucomplete', [] )
